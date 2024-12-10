@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSAP ScrollTrigger Örneği</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 font-sans leading-relaxed">
+
+    <!-- Başlık -->
+    <header class="bg-blue-500 text-white p-6 text-center">
+        <h1 class="text-3xl font-bold">GSAP ScrollTrigger</h1>
+    </header>
+
+    <!-- Aşağı Kaydır -->
+    <section class="h-screen flex items-center justify-center">
+        <h2 class="text-xl text-gray-600">Aşağı kaydırın -> -> -></h2>
+    </section>
+
+    <!-- Animasyon -->
+    <section id="trigger" class="h-screen bg-white flex items-center justify-center">
+        <div id="box" class="w-24 h-24 bg-blue-500 rounded-lg transform scale-50 opacity-0">
+        </div>
+    </section>
+
+    <!-- Son -->
+    <section class="h-screen flex items-center justify-center">
+        <h2 class="text-xl text-gray-600">Son ! ! !</h2>
+    </section>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.to("#box", {
+            scrollTrigger: {
+                trigger: "#trigger",         // Tetikleyici
+                start: "top center",         // Tetikleme noktası
+                end: "bottom center",        // Animasyonun sona erme noktası
+                scrub: true,                 // Scroll ile eş zamanlı animasyon (!)
+            },
+            scale: 1,                      // Boyut
+            opacity: 1,                    // Saydamlık
+            duration: 1,                   // Süre
+        });
+    </script>
+</body>
+
+</html>
